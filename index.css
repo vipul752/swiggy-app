@@ -1,0 +1,238 @@
+/* Import a similar font if not already available */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Increased padding for a more spacious look */
+  height: 80px; /* Adjusted height for a more prominent header */
+  font-family: "Poppins", sans-serif; /* Font similar to Swiggy */
+}
+
+.logo {
+  width: 100px; /* Increased logo size */
+  cursor: pointer;
+}
+
+/* Navigation Items */
+.nav-items > ul {
+  display: flex;
+  font-size: 20px; /* Adjusted font size */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav-items > ul > li {
+  padding: 0 15px; /* Adjusted padding */
+  margin: 0;
+}
+
+.nav-items {
+  padding: 0;
+}
+
+/* Body Styling */
+.body {
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  min-height: calc(100vh - 80px); /* Adjusted for new header height */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Restaurant Card Styling */
+.res-card {
+  width: 220px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  margin: 10px;
+  text-align: center;
+  min-height: 320px;
+}
+
+.res-card:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.res-logo {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.res-card h3 {
+  font-size: 16px; /* Adjusted font size */
+  margin: 10px 0;
+  color: #333;
+  font-weight: 600; /* Increased font weight */
+}
+
+.res-card h4 {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #777;
+  font-weight: 400; /* Regular font weight */
+}
+
+/* Container Styling */
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+/* Filter Button */
+.filter-btn {
+  background: linear-gradient(135deg, #007bff 0%, #0056d2 100%);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.filter-btn:hover {
+  background: linear-gradient(135deg, #0056d2 0%, #003b9b 100%);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Shimmer Wrapper */
+.shimmer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 100%;
+}
+
+/* Shimmer Card */
+.shimmer-card {
+  width: 220px;
+  height: 340px;
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer Effect */
+.shimmer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Header Button */
+.btn-header {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-header:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-header:active {
+  background-color: #0056b3;
+  transform: translateY(1px);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* Search Box */
+.search-box {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  width: 300px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-box:focus {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Search Button */
+.search-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+}
+
+.search-btn:active {
+  transform: scale(0.98);
+}
