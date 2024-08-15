@@ -4,7 +4,7 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filterRestaurants, setFilterRestaurants] = useState([]);
+  const [originalRestaurants, setFilterRestaurants] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -20,10 +20,10 @@ const Body = () => {
 
     console.log(json);
     setListOfRestaurants(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     );
     setFilterRestaurants(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     );
   };
 
@@ -60,17 +60,74 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            let filteredData = filterRestaurants.filter(
-              (restaurant) => restaurant.info.avgRating > 4.2
+            let filteredData = originalRestaurants.filter(
+              (restaurant) => restaurant?.info?.avgRating > 4.2
             );
             setFilterRestaurants(filteredData);
           }}
         >
           Top Rated Restraunts
         </button>
+        <button
+          className="price-filter-btn"
+          onClick={() => {
+            let filteredDataForPrice = originalRestaurants.filter(
+              (restaurant) => {
+                const costForTwoString = restaurant.info.costForTwo;
+                const costForTwo = parseInt(
+                  costForTwoString.replace(/[^0-9]/g, "")
+                );
+                return costForTwo >= 250 && costForTwo <= 300;
+              }
+            );
+            setFilterRestaurants(filteredDataForPrice);
+          }}
+        >
+          Rs 250-300
+        </button>
+        <button
+          className="sort-low-to-high-btn"
+          onClick={() => {
+            let sortedData = [...originalRestaurants].sort((a, b) => {
+              const costForTwoStringA = a.info.costForTwo;
+              const costForTwoA = parseInt(
+                costForTwoStringA.replace(/[^0-9]/g, "")
+              );
+              const costForTwoStringB = b.info.costForTwo;
+              const costForTwoB = parseInt(
+                costForTwoStringB.replace(/[^0-9]/g, "")
+              );
+              return costForTwoA - costForTwoB;
+            });
+            console.log(sortedData);
+            setFilterRestaurants(sortedData);
+          }}
+        >
+          Sort : Low to High
+        </button>
+        <button
+          className="sort-high-to-low-btn"
+          onClick={() => {
+            let sortedData = [...originalRestaurants].sort((a, b) => {
+              const costForTwoStringA = a.info.costForTwo;
+              const costForTwoA = parseInt(
+                costForTwoStringA.replace(/[^0-9]/g, "")
+              );
+              const costForTwoStringB = b.info.costForTwo;
+              const costForTwoB = parseInt(
+                costForTwoStringB.replace(/[^0-9]/g, "")
+              );
+              return costForTwoB - costForTwoA;
+            });
+            console.log(sortedData);
+            setFilterRestaurants(sortedData);
+          }}
+        >
+          Sort : High to Low
+        </button>
       </div>
       <div className="res-container">
-        {filterRestaurants.map((restaurant) => (
+        {originalRestaurants.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>

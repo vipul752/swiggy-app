@@ -106,6 +106,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.3s ease;
   font-family: "Poppins", sans-serif;
+  margin-right: 10px;
 }
 
 .filter-btn:hover {
@@ -188,13 +189,12 @@
   transform: translateY(1px);
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
 }
-
 /* Search Container */
 .search-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px 0; /* Increased margin for more space around the search container */
   gap: 10px;
 }
 
@@ -211,6 +211,7 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Search Box Focus */
 .search-box:focus {
   border-color: #007bff;
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
@@ -229,10 +230,88 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Search Button Hover */
 .search-btn:hover {
   background-color: #0056b3;
 }
 
+/* Search Button Active */
 .search-btn:active {
   transform: scale(0.98);
+}
+
+/* Filter Button */
+.filter-btn {
+  background: linear-gradient(135deg, #007bff 0%, #0056d2 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 24px; /* Consistent padding */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  margin-right: 10px; /* Space between buttons */
+}
+
+/* Filter Button Hover */
+.filter-btn:hover {
+  background: linear-gradient(135deg, #0056d2 0%, #003b9b 100%);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Price Filter Button */
+.price-filter-btn {
+  background: linear-gradient(135deg, #007bff 0%, #0056d2 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 24px; /* Consistent padding */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  margin-right: 10px; /* Space between buttons */
+}
+
+/* Price Filter Button Hover */
+.price-filter-btn:hover {
+  background: linear-gradient(135deg, #0056d2 0%, #003b9b 100%);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Sort Button */
+.sort-low-to-high-btn,
+.sort-high-to-low-btn {
+  background: linear-gradient(135deg, #007bff 0%, #0056d2 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 24px; /* Consistent padding */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 16px; /* Font size */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  margin-right: 10px; /* Space between buttons */
+}
+
+/* Sort Button Hover */
+.sort-low-to-high-btn:hover,
+.sort-high-to-low-btn:hover {
+  background: linear-gradient(135deg, #0056d2 0%, #003b9b 100%);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Sort Button Active */
+.sort-low-to-high-btn:active,
+.sort-high-to-low-btn:active {
+  background: linear-gradient(135deg, #003b9b 0%, #001f5a 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
 }
