@@ -20,10 +20,10 @@ const Body = () => {
 
     console.log(json);
     setListOfRestaurants(
-      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
     setFilterRestaurants(
-      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
   };
 
@@ -124,6 +124,18 @@ const Body = () => {
           }}
         >
           Sort : High to Low
+        </button>
+        <button
+          className="fast-delevary-btn"
+          onClick={() => {
+            let filteredData = originalRestaurants.filter(
+              (restaurant) => restaurant?.info?.sla.deliveryTime < 50
+            );
+            console.log(filteredData);
+            setFilterRestaurants(filteredData);
+          }}
+        >
+          Fast Delivery
         </button>
       </div>
       <div className="res-container">

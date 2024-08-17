@@ -4,17 +4,18 @@ import { CDN_URL } from "../utils/constant";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { name, avgRating, cuisines, cloudinaryImageId, costForTwo } =
-    resData?.info;
+  // Destructure safely with optional chaining
+  const { name, avgRating, cuisines, cloudinaryImageId, costForTwo, sla } =
+    resData?.info || {};
 
   return (
     <div className="res-card">
       <img className="res-logo" src={CDN_URL + cloudinaryImageId} alt="logo" />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} star</h4>
-      <h4>{resData.info.sla.deliveryTime} minutes</h4>
-      <h4>{costForTwo}</h4>
+      <h3>{name || "Restaurant Name"}</h3>
+      <h4>{cuisines?.join(", ") || "Cuisine not available"}</h4>
+      <h4>{avgRating || "Rating not available"} star</h4>
+      <h4>{sla?.deliveryTime || "Delivery time not available"} minutes</h4>
+      <h4>{costForTwo || "Cost information not available"}</h4>
     </div>
   );
 };

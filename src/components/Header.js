@@ -1,6 +1,6 @@
 import { LOGO_URL } from "../utils/constant";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 // Header component
 const Header = () => {
   //btn which default value is "login"
@@ -16,11 +16,19 @@ const Header = () => {
         <img className="logo" src={LOGO_URL} alt="logo" />
       </div>
       <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
+        <ul className="nav-icon">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/">Contact</Link>
+          </li>
+          <li>
+            <Link to="/">Cart</Link>
+          </li>
           <button
             className="btn-header"
             style={bgColors}
