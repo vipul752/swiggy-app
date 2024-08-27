@@ -4,7 +4,6 @@ import { CDN_URL } from "../utils/constant";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  // Destructure safely with optional chaining
   const { name, avgRating, cuisines, cloudinaryImageId, costForTwo, sla } =
     resData?.info || {};
 

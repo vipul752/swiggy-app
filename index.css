@@ -1,4 +1,7 @@
-/* Header Styling */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -676,4 +679,31 @@
 a {
   text-decoration: none; /* Removes underline from all links */
   color: inherit; /* Ensures links inherit color from parent */
+}
+.offline-message {
+  background-color: #f8d7da; /* Light red background for warning */
+  color: #721c24; /* Dark red text color */
+  padding: 20px;
+  border: 1px solid #f5c6cb; /* Border to match the background */
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  margin: 50px auto; /* Center the message on the screen */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: "Arial", sans-serif;
+}
+
+.offline-message h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.offline-message p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: large;
+  font-weight: bold;
 }

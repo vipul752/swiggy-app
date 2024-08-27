@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/index.css";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,14 +8,18 @@ import About from "./components/About";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 // Main App component
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <div>
+        <Header />
+        <Outlet />
+      </div>
+    </Provider>
   );
 };
 
