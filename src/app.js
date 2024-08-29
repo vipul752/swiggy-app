@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/index.css";
+import "../index.css";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 // Main App component
 
 const App = () => {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantsMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
