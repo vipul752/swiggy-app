@@ -1,71 +1,130 @@
 import { LOGO_URL } from "../utils/constant";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
+import { FaShoppingCart } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 const Header = () => {
-  //btn which default value is "login"
-  let [btn, setbtn] = useState("login");
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const online = useOnlineStatus();
-  const bgColors = {
-    backgroundColor: btn === "login" ? "#007bff" : "red",
+  const cartItems = useSelector((store) => store.cart.items);
+  const navigate = useNavigate();
+  const dropdownRef = useRef(null); // Create a reference for the dropdown
+
+  useEffect(() => {
+    const isLoggedStatus = localStorage.getItem("isLoggedIn");
+    const storedUsername = localStorage.getItem("username");
+    if (isLoggedStatus === "true" && storedUsername) {
+      setIsLoggedIn(true);
+      setUsername(storedUsername);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+    setUsername("");
+    toast.success("Logged out successfully");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
 
-  const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  const handleProfile = () => {
+    navigate("/profile");
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className="header">
+    <div className="bg-white shadow-md p-4 flex  items-center justify-between">
+      <Toaster position="top-center" />
+
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="logo" />
+        <img className="w-20" src={LOGO_URL} alt="logo" />
       </div>
-      <div className="nav-items">
-        <ul className="nav-icon">
-          <li>Online Status: {online ? "✅" : "🔴"}</li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li className="relative flex items-center">
-            <Link
-              to="/cart"
-              className="flex items-center text-lg font-semibold text-gray-700 hover:text-gray-900 transition-colors"
+      <div className="flex items-center space-x-10 font-semibold">
+        <span className="text-gray-600">
+          Online Status: {online ? "✅" : "🔴"}
+        </span>
+        <Link className="text-gray-600 hover:text-blue-500" to="/">
+          Home
+        </Link>
+        <Link className="text-gray-600 hover:text-blue-500" to="/about">
+          About
+        </Link>
+        <Link className="text-gray-600 hover:text-blue-500" to="/contact">
+          Contact
+        </Link>
+
+        {isLoggedIn ? (
+          <div className="relative inline-block">
+            <button
+              onClick={() => setDropdownVisible(!dropdownVisible)}
+              className="text-gray-700 font-medium hover:text-blue-500 focus:outline-none"
             >
-              <span className="cart-icon mr-2 relative">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="w-6 h-6 text-gray-700 hover:text-gray-900 transition-colors"
+              {username}
+            </button>
+
+            {dropdownVisible && (
+              <div
+                ref={dropdownRef}
+                className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg overflow-hidden z-10"
+              >
+                <Link to="/profile">
+                  <button
+                    onClick={handleProfile}
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-100 transition-colors duration-200"
+                  >
+                    Profile
+                  </button>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-left px-4 py-2 text-red-500 hover:bg-red-100 transition-colors duration-200"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5H19M7 13l-2 6h12l-2-6M7 13h10M10 17h4"
-                  />
-                </svg>
-                {cartItems?.length > 0 && (
-                  <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs px-2 py-1 shadow-lg">
-                    {cartItems.length}
-                  </span>
-                )}
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link to="/signin" className="text-blue-500 font-semibold">
+            Sign In
+          </Link>
+        )}
+
+        <div className="relative flex items-center">
+          <Link
+            to="/cart"
+            className="text-gray-600 hover:text-blue-500 relative flex items-center"
+          >
+            <FaShoppingCart className="text-2xl" />
+            {cartItems?.length > 0 && (
+              <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs px-1.5 py-0.5 transform translate-x-1/2 -translate-y-1/2">
+                {cartItems.length}
               </span>
-              <span>Cart</span>
-              <span className="ml-2 text-gray-500">
-                ({cartItems?.length || 0})
-              </span>
-            </Link>
-          </li>
-        </ul>
+            )}
+          </Link>
+        </div>
       </div>
     </div>
   );

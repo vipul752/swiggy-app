@@ -20,10 +20,6 @@ const RestaurantsMenu = () => {
 
   console.log(resInfo?.cards[2]?.card?.card?.info);
 
-  const menuItems =
-    resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card
-      .itemCards || [];
-
   const category =
     resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter(
       (c) =>
@@ -35,7 +31,7 @@ const RestaurantsMenu = () => {
 
   return (
     <div className="container">
-      <div className="restaurant-card">
+      <div className="restaurant-card ">
         <div className="restaurant-name">{restaurantName}</div>
         <div className="restaurant-info">
           <div className="restaurant-rating">

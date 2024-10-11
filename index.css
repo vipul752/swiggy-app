@@ -5,9 +5,11 @@
 .header {
   display: flex;
   justify-content: space-between;
+  background-color: #ffffff; /* Light background */
+  color: #000000; /* Dark text */
   align-items: center;
-  padding: 10px 20px; /* Increased padding for a more spacious look */
-  height: 80px; /* Adjusted height for a more prominent header */
+  padding: 10px 15px; /* Increased padding for a more spacious look */
+  height: 90px; /* Adjusted height for a more prominent header */
   font-family: "Poppins", sans-serif; /* Font similar to Swiggy */
 }
 
@@ -46,45 +48,99 @@
 
 /* Restaurant Card Styling */
 .res-card {
-  width: 220px;
+  width: 250px;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #fff, #f9f9f9);
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  margin: 10px;
+  margin: 15px;
   text-align: center;
-  min-height: 320px;
+  height: 400px;
+
+  position: relative;
 }
 
 .res-card:hover {
   transform: translateY(-10px);
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Uniform Card Image Styling */
 .res-logo {
-  width: 100%; /* Full width of the card */
-  height: 150px; /* Fixed height for consistency */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-  border-radius: 8px; /* Match the card's border radius */
-  margin-bottom: 15px; /* Space below the image */
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
 }
 
+.res-card:hover .res-logo {
+  transform: scale(1.05);
+}
+
+/* Restaurant Name Styling */
 .res-card h3 {
-  font-size: 16px; /* Adjusted font size */
-  margin: 10px 0;
+  font-size: 18px;
+  margin: 12px 0;
   color: #333;
-  font-weight: 600; /* Increased font weight */
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis */
 }
 
+/* Restaurant Info */
 .res-card h4 {
-  font-size: 14px;
+  font-size: 15px;
   margin: 5px 0;
-  color: #777;
-  font-weight: 400; /* Regular font weight */
+  color: #888;
+  font-weight: 400;
+}
+
+/* Cuisine Tags Styling */
+.cuisine-tags {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.cuisine-tag {
+  background-color: #ffe8d6;
+  color: #d17b33;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+/* Delivery Time and Price */
+.delivery-price-info {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Button-like Elements */
+.res-card button {
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.res-card button:hover {
+  background-color: #e07b00;
+  cursor: pointer;
 }
 
 /* Container Styling */
@@ -93,8 +149,28 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
-  background-color: #f5f5f5;
+  padding: 40px;
+  background-color: #fafafa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .res-card {
+    width: 180px;
+    padding: 15px;
+  }
+
+  .res-card h3 {
+    font-size: 16px;
+  }
+
+  .res-card h4 {
+    font-size: 13px;
+  }
+
+  .res-logo {
+    height: 140px;
+  }
 }
 
 /* Filter Button */
