@@ -12,7 +12,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:1234",
+    origin: "https://swiggy-app-0.onrender.com",
     methods: "GET,POST",
     allowedHeaders: "Content-Type",
   })
