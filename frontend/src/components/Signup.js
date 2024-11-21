@@ -14,7 +14,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://swiggy-app-css7.onrender.com/register", {
+      const response = await fetch(" https://swiggy-app-5.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
